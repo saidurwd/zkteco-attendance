@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employee Mappings</title>
-</head>
-<body>
+@extends('layouts.admin')
+
+@section('title', 'Employee Mappings')
+
+@section('content')
     <h1>Employee Mappings - {{ $device->serial_number }}</h1>
 
     <div style="margin-bottom: 20px;">
@@ -52,5 +49,4 @@
     </table>
 
     {{ $mappings->links() }}
-</body>
-</html>
+@stop

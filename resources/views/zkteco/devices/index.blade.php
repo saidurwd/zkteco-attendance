@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZKTeco Devices</title>
-</head>
-<body>
+@extends('layouts.admin')
+
+@section('title', 'Devices')
+
+@section('content')
     <h1>ZKTeco Devices</h1>
 
     <div style="margin-bottom: 20px;">
@@ -72,5 +69,4 @@
     </table>
 
     {{ $devices->links() }}
-</body>
-</html>
+@stop

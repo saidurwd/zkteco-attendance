@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Mapping</title>
-</head>
-<body>
+@extends('layouts.admin')
+
+@section('title', 'Add Mapping')
+
+@section('content')
     <h1>Add Employee Mapping - {{ $device->serial_number }}</h1>
 
     <form method="POST" action="{{ route('zkteco.devices.mappings.store', $device) }}">
@@ -28,5 +25,4 @@
             <a href="{{ route('zkteco.devices.mappings.index', $device) }}">Cancel</a>
         </div>
     </form>
-</body>
-</html>
+@stop

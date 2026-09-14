@@ -9,6 +9,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/home', function () {
+    return view('dashboard');
+})->name('home');
+
 Route::get('/iclock/cdata', [AdmsController::class, 'handshake']);
 Route::post('/iclock/cdata', [AdmsController::class, 'attendance']);
 Route::get('/iclock/getrequest', [AdmsController::class, 'getRequest']);

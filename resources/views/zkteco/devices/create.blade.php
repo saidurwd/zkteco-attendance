@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Device</title>
-</head>
-<body>
+@extends('layouts.admin')
+
+@section('title', 'Add Device')
+
+@section('content')
     <h1>Add ZKTeco Device</h1>
 
     <form method="POST" action="{{ route('zkteco.devices.store') }}">
@@ -54,5 +51,4 @@
             <a href="{{ route('zkteco.devices.index') }}">Cancel</a>
         </div>
     </form>
-</body>
-</html>
+@stop
