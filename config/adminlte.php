@@ -168,11 +168,11 @@ return [
     */
 
     'usermenu_enabled' => true,
-    'usermenu_header' => false,
+    'usermenu_header' => true,
     'usermenu_header_class' => 'bg-primary',
     'usermenu_image' => true,
-    'usermenu_desc' => false,
-    'usermenu_profile_url' => false,
+    'usermenu_desc' => true,
+    'usermenu_profile_url' => 'settings/profile',
 
     /*
     |--------------------------------------------------------------------------
@@ -815,16 +815,6 @@ return [
             'text' => 'Users',
             'url' => 'admin/users',
             'icon' => 'bi bi-person',
-        ],
-        [
-            'text' => 'Profile',
-            'url' => 'settings/profile',
-            'icon' => 'bi bi-person',
-        ],
-        [
-            'text' => 'Change Password',
-            'url' => 'settings/password',
-            'icon' => 'bi bi-lock',
         ],
     ],
     'filters' => [

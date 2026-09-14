@@ -34,4 +34,9 @@ class User extends Authenticatable
     {
         return $this->profile_picture ? asset('storage/' . $this->profile_picture) : null;
     }
+
+    public function adminlte_profile_url()
+    {
+        return route('settings.edit');
+    }
 }
