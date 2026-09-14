@@ -9,7 +9,7 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <p>Welcome to the ZKTeco Attendance System Admin Panel.</p>
+                    <p>Welcome to the Attendance System Admin Panel.</p>
                 </div>
                 <!-- /.card-body -->
             </div>

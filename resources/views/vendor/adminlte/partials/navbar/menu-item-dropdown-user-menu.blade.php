@@ -103,20 +103,20 @@
 
         {{-- User menu footer --}}
         <li class="user-footer">
-            <div class="d-flex justify-content-between align-items-center">
-                <div>
+            <div class="d-flex flex-column gap-2">
+                <div class="d-flex justify-content-between">
                     @if($profile_url)
-                        <a href="{{ $profile_url }}" class="btn btn-outline-secondary btn-sm me-1">
+                        <a href="{{ $profile_url }}" class="btn btn-outline-secondary btn-sm flex-grow-1 me-1">
                             <i class="bi bi-person me-1"></i>
                             {{ __('adminlte::menu.profile') }}
                         </a>
                     @endif
-                    <a href="{{ $change_password_url }}" class="btn btn-outline-warning btn-sm">
+                    <a href="{{ $change_password_url }}" class="btn btn-outline-warning btn-sm flex-grow-1">
                         <i class="bi bi-lock me-1"></i>
                         Change Password
                     </a>
                 </div>
-                <a class="btn btn-outline-danger btn-sm" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                <a class="btn btn-outline-danger btn-sm w-100" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     <i class="bi bi-power me-1"></i>
                     {{ __('adminlte::adminlte.log_out') }}
                 </a>
