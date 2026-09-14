@@ -791,6 +791,11 @@ return [
             'url' => 'zkteco/devices/*/mappings',
             'icon' => 'bi bi-link-45deg',
         ],
+        [
+            'text' => 'attendance_logs',
+            'url' => 'zkteco/attendance-logs',
+            'icon' => 'bi bi-calendar-check',
+        ],
         ['header' => 'account_settings'],
         [
             'text' => 'profile',

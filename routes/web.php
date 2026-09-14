@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ZkTeco\AdmsController;
 use App\Http\Controllers\ZkTeco\DeviceController;
 use App\Http\Controllers\ZkTeco\MappingController;
+use App\Http\Controllers\ZkTeco\AttendanceLogController;
 use App\Http\Controllers\SettingsController;
 
 Route::get('/', function () {
@@ -27,6 +28,8 @@ Route::middleware(['web', 'auth'])->prefix('zkteco')->name('zkteco.')->group(fun
         Route::put('/{mapping}', [MappingController::class, 'update'])->name('update');
         Route::delete('/{mapping}', [MappingController::class, 'destroy'])->name('destroy');
     });
+
+    Route::resource('attendance-logs', AttendanceLogController::class);
 });
 
 Auth::routes();
