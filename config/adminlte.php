@@ -77,12 +77,12 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
-    'logo_img' => 'vendor/adminlte/dist/assets/img/AdminLTELogo.png',
+    'logo' => null,
+    'logo_img' => 'images/attendance-nexus-logo.png',
     'logo_img_class' => 'brand-image opacity-75 shadow',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs opacity-75',
-    'logo_img_alt' => 'Admin Logo',
+    'logo_img_alt' => 'Attendance Nexus',
 
     /*
     |--------------------------------------------------------------------------
@@ -98,12 +98,12 @@ return [
     */
 
     'auth_logo' => [
-        'enabled' => false,
+        'enabled' => true,
         'img' => [
-            'path' => 'vendor/adminlte/dist/assets/img/AdminLTELogo.png',
-            'alt' => 'Auth Logo',
+            'path' => 'images/attendance-nexus-logo.png',
+            'alt' => 'Attendance Nexus',
             'class' => '',
-            'width' => 50,
+            'width' => 200,
             'height' => 50,
         ],
     ],
