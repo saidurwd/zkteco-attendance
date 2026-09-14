@@ -11,7 +11,7 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <form method="POST" action="{{ route('admin.users.update', $user) }}">
+                    <form method="POST" action="{{ route('admin.users.update', $user) }}" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
 
@@ -27,6 +27,19 @@
                             <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
                             <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email', $user->email) }}" required>
                             @error('email')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="profile_picture" class="form-label">Profile Picture</label>
+                            <input type="file" class="form-control @error('profile_picture') is-invalid @enderror" id="profile_picture" name="profile_picture" accept="image/*">
+                            @if ($user->profile_picture)
+                                <div class="mt-2">
+                                    <img src="{{ asset('storage/' . $user->profile_picture) }}" alt="{{ $user->name }}" width="80" height="80" class="rounded">
+                                </div>
+                            @endif
+                            @error('profile_picture')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>

@@ -29,6 +29,7 @@
                         <table class="table table-bordered table-hover">
                             <thead>
                                 <tr>
+                                    <th>Profile Picture</th>
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>Created At</th>
@@ -38,6 +39,13 @@
                             <tbody>
                                 @forelse ($users as $user)
                                     <tr>
+                                        <td>
+                                            @if ($user->profile_picture)
+                                                <img src="{{ asset('storage/' . $user->profile_picture) }}" alt="{{ $user->name }}" width="50" height="50" class="rounded">
+                                            @else
+                                                <img src="https://ui-avatars.com/api/?name={{ urlencode($user->name) }}&background=random" alt="{{ $user->name }}" width="50" height="50" class="rounded">
+                                            @endif
+                                        </td>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->created_at->format('Y-m-d H:i') }}</td>

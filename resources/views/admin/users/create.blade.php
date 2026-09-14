@@ -11,7 +11,7 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <form method="POST" action="{{ route('admin.users.store') }}">
+                    <form method="POST" action="{{ route('admin.users.store') }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="mb-3">
@@ -41,6 +41,14 @@
                         <div class="mb-3">
                             <label for="password_confirmation" class="form-label">Confirm Password <span class="text-danger">*</span></label>
                             <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="profile_picture" class="form-label">Profile Picture</label>
+                            <input type="file" class="form-control @error('profile_picture') is-invalid @enderror" id="profile_picture" name="profile_picture" accept="image/*">
+                            @error('profile_picture')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
 
                         <div class="mt-4">
