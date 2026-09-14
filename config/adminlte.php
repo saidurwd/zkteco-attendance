@@ -439,8 +439,21 @@ return [
     'rtl' => [
         'enabled' => null,
         'locales' => [
-            'ar', 'arc', 'ckb', 'dv', 'fa', 'ha', 'he', 'khw', 'ks', 'ps',
-            'sd', 'ug', 'ur', 'uz-AF', 'yi',
+            'ar',
+            'arc',
+            'ckb',
+            'dv',
+            'fa',
+            'ha',
+            'he',
+            'khw',
+            'ks',
+            'ps',
+            'sd',
+            'ug',
+            'ur',
+            'uz-AF',
+            'yi',
         ],
     ],
 
@@ -777,33 +790,34 @@ return [
 
         // Sidebar items:
         [
-            'text' => 'dashboard',
+            'text' => 'Dashboard',
             'url' => 'home',
             'icon' => 'bi bi-speedometer2',
         ],
+        ['header' => 'ZKTeco Attendance'],
         [
-            'text' => 'devices',
+            'text' => 'Devices',
             'url' => 'zkteco/devices',
             'icon' => 'bi bi-device-hdd',
         ],
         [
-            'text' => 'mappings',
+            'text' => 'Mappings',
             'url' => 'zkteco/devices/*/mappings',
             'icon' => 'bi bi-link-45deg',
         ],
         [
-            'text' => 'attendance_logs',
+            'text' => 'Attendance Logs',
             'url' => 'zkteco/attendance-logs',
             'icon' => 'bi bi-calendar-check',
         ],
-        ['header' => 'account_settings'],
+        ['header' => 'Account Settings'],
         [
-            'text' => 'profile',
+            'text' => 'Profile',
             'url' => 'settings/profile',
             'icon' => 'bi bi-person',
         ],
         [
-            'text' => 'change_password',
+            'text' => 'Change Password',
             'url' => 'settings/password',
             'icon' => 'bi bi-lock',
         ],
