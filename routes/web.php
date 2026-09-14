@@ -9,9 +9,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home', function () {
-    return view('dashboard');
-})->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
 
 Route::get('/iclock/cdata', [AdmsController::class, 'handshake']);
 Route::post('/iclock/cdata', [AdmsController::class, 'attendance']);
@@ -31,9 +29,5 @@ Route::middleware('web')->prefix('zkteco')->name('zkteco.')->group(function () {
         Route::delete('/{mapping}', [MappingController::class, 'destroy'])->name('destroy');
     });
 });
-
-// Add ['verify' => true] when the application uses the email verification of
-// Laravel: the 'verify' view of this package posts to the 'verification.resend'
-// route, which 'Auth::routes()' only registers with that option.
 
 Auth::routes();
