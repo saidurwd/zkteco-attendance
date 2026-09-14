@@ -812,6 +812,11 @@ return [
         ],
         ['header' => 'Account Settings'],
         [
+            'text' => 'Users',
+            'url' => 'admin/users',
+            'icon' => 'bi bi-person',
+        ],
+        [
             'text' => 'Profile',
             'url' => 'settings/profile',
             'icon' => 'bi bi-person',
@@ -820,20 +825,6 @@ return [
             'text' => 'Change Password',
             'url' => 'settings/password',
             'icon' => 'bi bi-lock',
-        ],
-        [
-            'text' => 'Users',
-            'icon' => 'bi bi-people',
-            'submenu' => [
-                [
-                    'text' => 'All Users',
-                    'url' => 'admin/users',
-                ],
-                [
-                    'text' => 'Add User',
-                    'url' => 'admin/users/create',
-                ],
-            ],
         ],
     ],
     'filters' => [
