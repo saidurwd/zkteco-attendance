@@ -6,6 +6,7 @@ use App\Http\Controllers\ZkTeco\DeviceController;
 use App\Http\Controllers\ZkTeco\MappingController;
 use App\Http\Controllers\ZkTeco\AttendanceLogController;
 use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return redirect()->route('home');
@@ -42,5 +43,16 @@ Route::middleware('auth')->group(function () {
         Route::put('/profile', [SettingsController::class, 'update'])->name('update');
         Route::get('/password', [SettingsController::class, 'password'])->name('password');
         Route::put('/password', [SettingsController::class, 'updatePassword'])->name('password.update');
+    });
+
+    Route::prefix('admin')->name('admin.')->group(function () {
+        Route::get('users', [UserController::class, 'index'])->name('users.index');
+        Route::get('users/create', [UserController::class, 'create'])->name('users.create');
+        Route::post('users', [UserController::class, 'store'])->name('users.store');
+        Route::get('users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
+        Route::put('users/{user}', [UserController::class, 'update'])->name('users.update');
+        Route::delete('users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+        Route::get('users/{user}/change-password', [UserController::class, 'changePassword'])->name('users.change-password');
+        Route::put('users/{user}/change-password', [UserController::class, 'updatePassword'])->name('users.change-password.update');
     });
 });

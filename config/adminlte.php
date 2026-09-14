@@ -821,6 +821,20 @@ return [
             'url' => 'settings/password',
             'icon' => 'bi bi-lock',
         ],
+        [
+            'text' => 'Users',
+            'icon' => 'bi bi-people',
+            'submenu' => [
+                [
+                    'text' => 'All Users',
+                    'url' => 'admin/users',
+                ],
+                [
+                    'text' => 'Add User',
+                    'url' => 'admin/users/create',
+                ],
+            ],
+        ],
     ],
     'filters' => [
         JeroenNoten\LaravelAdminLte\Menu\Filters\GateFilter::class,
