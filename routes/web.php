@@ -7,7 +7,7 @@ use App\Http\Controllers\ZkTeco\MappingController;
 use App\Http\Controllers\SettingsController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('home');
 })->middleware('auth');
 
 Route::get('/iclock/cdata', [AdmsController::class, 'handshake']);
