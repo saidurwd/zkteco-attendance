@@ -794,12 +794,12 @@ return [
         ['header' => 'account_settings'],
         [
             'text' => 'profile',
-            'url' => 'admin/settings',
+            'url' => 'settings/profile',
             'icon' => 'bi bi-person',
         ],
         [
             'text' => 'change_password',
-            'url' => 'admin/settings',
+            'url' => 'settings/password',
             'icon' => 'bi bi-lock',
         ],
     ],
