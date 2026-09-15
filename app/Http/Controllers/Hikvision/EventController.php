@@ -43,34 +43,29 @@ class EventController extends Controller
     {
         $tz = Config::get('app.timezone', 'UTC');
 
-        $tzOffsetSeconds = (new DateTimeZone($tz))->getOffset(new DateTime());
-        $tzOffsetHours = $tzOffsetSeconds / 3600;
-
-        $tzExpr = "TIMESTAMPADD(HOUR, {$tzOffsetHours}, al.attendance_time)";
-
         $query = DB::table('attendance_logs as al')
             ->selectRaw("
                 al.device_id,
                 d.device_name,
                 d.device_serial,
                 al.employee_no,
-                DATE({$tzExpr}) AS attendance_date,
-                MIN({$tzExpr}) AS clock_in,
-                MAX({$tzExpr}) AS clock_out,
+                DATE(al.attendance_time) AS attendance_date,
+                MIN(al.attendance_time) AS clock_in,
+                MAX(al.attendance_time) AS clock_out,
                 COUNT(al.id) AS total_entries,
-                TIMEDIFF(MAX({$tzExpr}), MIN({$tzExpr})) AS total_hours
+                TIMEDIFF(MAX(al.attendance_time), MIN(al.attendance_time)) AS total_hours
             ")
             ->leftJoin('hikvision_devices as d', 'd.id', '=', 'al.device_id')
             ->groupBy('al.device_id', 'd.device_name', 'd.device_serial', 'al.employee_no',
-                      DB::raw("DATE({$tzExpr})"))
+                      DB::raw('DATE(al.attendance_time)'))
             ->orderByDesc('attendance_date')
             ->orderBy('al.employee_no');
 
         if ($request->filled('start_date')) {
-            $query->whereDate(DB::raw($tzExpr), '>=', $request->start_date);
+            $query->whereDate('al.attendance_time', '>=', $request->start_date);
         }
         if ($request->filled('end_date')) {
-            $query->whereDate(DB::raw($tzExpr), '<=', $request->end_date);
+            $query->whereDate('al.attendance_time', '<=', $request->end_date);
         }
         if ($request->filled('employee_no')) {
             $query->where('al.employee_no', 'like', "%{$request->employee_no}%");

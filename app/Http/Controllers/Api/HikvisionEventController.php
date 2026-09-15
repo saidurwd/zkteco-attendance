@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\HikvisionDevice;
 use App\Models\HikvisionEvent;
+use App\Jobs\ProcessHikvisionEvent;
 use App\Services\HikvisionEventParser;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -65,6 +66,8 @@ class HikvisionEventController extends Controller
             if ($device) {
                 $device->update(['last_event_at' => now()]);
             }
+
+            ProcessHikvisionEvent::dispatch($event->id);
 
             return response('OK', Response::HTTP_OK);
         } catch (\Throwable $e) {
