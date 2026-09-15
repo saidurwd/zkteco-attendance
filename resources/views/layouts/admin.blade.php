@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Attendance Nexus')
+@section('title', 'Dashboard')
 
 @section('content_header')
     <x-adminlte-content-header 

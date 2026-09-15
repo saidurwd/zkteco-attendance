@@ -39,7 +39,7 @@ return [
 
     'title' => 'Attendance Nexus',
     'title_prefix' => '',
-    'title_postfix' => '',
+    'title_postfix' => '- Attendance Nexus',
 
     /*
     |--------------------------------------------------------------------------
