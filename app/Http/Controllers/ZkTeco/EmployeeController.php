@@ -12,8 +12,7 @@ class EmployeeController extends Controller
     {
         $employees = ZkEmployee::query()
             ->when($request->search, fn ($q, $search) => $q->where('employee_id', 'like', "%{$search}%")
-                ->orWhere('first_name', 'like', "%{$search}%")
-                ->orWhere('last_name', 'like', "%{$search}%")
+                ->orWhere('name', 'like', "%{$search}%")
                 ->orWhere('email', 'like', "%{$search}%")
                 ->orWhere('department', 'like', "%{$search}%"))
             ->orderByDesc('created_at')
@@ -32,8 +31,7 @@ class EmployeeController extends Controller
     {
         $validated = $request->validate([
             'employee_id' => 'required|string|max:100|unique:zk_employees,employee_id',
-            'first_name' => 'nullable|string|max:255',
-            'last_name' => 'nullable|string|max:255',
+            'name' => 'nullable|string|max:255',
             'email' => 'nullable|email|max:255',
             'department' => 'nullable|string|max:255',
             'position' => 'nullable|string|max:255',
@@ -55,8 +53,7 @@ class EmployeeController extends Controller
     public function update(Request $request, ZkEmployee $employee)
     {
         $validated = $request->validate([
-            'first_name' => 'nullable|string|max:255',
-            'last_name' => 'nullable|string|max:255',
+            'name' => 'nullable|string|max:255',
             'email' => 'nullable|email|max:255',
             'department' => 'nullable|string|max:255',
             'position' => 'nullable|string|max:255',

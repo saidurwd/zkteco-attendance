@@ -52,7 +52,7 @@
                                 @forelse ($employees as $employee)
                                     <tr>
                                         <td>{{ $employee->employee_id }}</td>
-                                        <td>{{ $employee->first_name }} {{ $employee->last_name }}</td>
+                                        <td>{{ $employee->name }}</td>
                                         <td>{{ $employee->email }}</td>
                                         <td>{{ $employee->department }}</td>
                                         <td>{{ $employee->position }}</td>

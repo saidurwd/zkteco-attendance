@@ -9,8 +9,7 @@ class ZkEmployee extends Model
 {
     protected $fillable = [
         'employee_id',
-        'first_name',
-        'last_name',
+        'name',
         'email',
         'department',
         'position',

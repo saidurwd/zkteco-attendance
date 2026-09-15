@@ -11,8 +11,7 @@ return new class extends Migration
         Schema::create('zk_employees', function (Blueprint $table) {
             $table->id();
             $table->string('employee_id', 100)->unique();
-            $table->string('first_name')->nullable();
-            $table->string('last_name')->nullable();
+            $table->string('name')->nullable();
             $table->string('email')->nullable();
             $table->string('department')->nullable();
             $table->string('position')->nullable();
