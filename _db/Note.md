@@ -15,4 +15,12 @@ URL:
 If the interface asks for a complete URL:
 https://attendance.example.com/api/hikvision/events
 
+Event Processor
+----------------------------
+php artisan make:command ProcessHikvisionQueue
+cPanel Cron Job
+cd /home/USERNAME/attendance && /usr/local/bin/php artisan hikvision:queue
+
+
+
 
