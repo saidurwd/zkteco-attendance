@@ -49,11 +49,13 @@ class AttendanceParser
             $dateTime = trim($fields[1]);
 
             try {
+                $appTimezone = config('app.timezone', 'UTC');
+
                 $attendanceTime = Carbon::createFromFormat(
                     'Y-m-d H:i:s',
                     $dateTime,
-                    config('app.timezone')
-                );
+                    'UTC'
+                )->timezone($appTimezone);
             } catch (\Throwable $e) {
                 Log::warning(
                     'Invalid ZKTeco attendance timestamp',
