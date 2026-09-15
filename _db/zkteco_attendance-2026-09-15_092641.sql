@@ -40,7 +40,7 @@ CREATE TABLE `attendance_logs` (
   KEY `attendance_logs_device_id_attendance_time_index` (`device_id`,`attendance_time`),
   CONSTRAINT `attendance_logs_device_id_foreign` FOREIGN KEY (`device_id`) REFERENCES `hikvision_devices` (`id`) ON DELETE SET NULL,
   CONSTRAINT `attendance_logs_hikvision_event_id_foreign` FOREIGN KEY (`hikvision_event_id`) REFERENCES `hikvision_events` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -50,6 +50,10 @@ CREATE TABLE `attendance_logs` (
 LOCK TABLES `attendance_logs` WRITE;
 /*!40000 ALTER TABLE `attendance_logs` DISABLE KEYS */;
 set autocommit=0;
+INSERT INTO `attendance_logs` VALUES
+(1,'EMP001',NULL,'2026-09-15 08:10:00','checkIn','face','HIKVISION',6,'2026-09-15 03:17:20','2026-09-15 03:17:20'),
+(2,'EMP001',NULL,'2026-09-15 18:05:00','checkOut','face','HIKVISION',7,'2026-09-15 03:17:31','2026-09-15 03:17:31'),
+(3,'40065',NULL,'2026-09-15 08:18:00','checkOut','face','HIKVISION',8,'2026-09-15 03:24:40','2026-09-15 03:24:40');
 /*!40000 ALTER TABLE `attendance_logs` ENABLE KEYS */;
 UNLOCK TABLES;
 commit;
@@ -217,7 +221,7 @@ CREATE TABLE `hikvision_events` (
   KEY `hikvision_events_processing_status_index` (`processing_status`),
   KEY `hikvision_events_serial_no_index` (`serial_no`),
   CONSTRAINT `hikvision_events_device_id_foreign` FOREIGN KEY (`device_id`) REFERENCES `hikvision_devices` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -232,7 +236,10 @@ INSERT INTO `hikvision_events` VALUES
 (2,NULL,'AccessControllerEvent',NULL,NULL,'EMP002','Test Employee 2',NULL,NULL,NULL,'checkOut','face',200001,'<EventNotificationAlert><eventType>AccessControllerEvent</eventType><AccessControllerEvent><employeeNoString>EMP002</employeeNoString><name>Test Employee 2</name><attendanceStatus>checkOut</attendanceStatus><currentVerifyMode>face</currentVerifyMode><serialNo>200001</serialNo></AccessControllerEvent></EventNotificationAlert>','XML','PENDING',NULL,'2026-09-15 08:30:47',NULL,'2026-09-15 02:30:47','2026-09-15 02:30:47'),
 (3,NULL,'AccessControllerEvent','active','2026-09-15 08:15:00','EMP001','Test Employee','',5,75,'checkIn','face',100002,'{\n    \"EventNotificationAlert\": {\n        \"ipAddress\": \"192.168.1.50\",\n        \"dateTime\": \"2026-09-15T08:15:00+06:00\",\n        \"eventType\": \"AccessControllerEvent\",\n        \"eventState\": \"active\",\n        \"AccessControllerEvent\": {\n            \"employeeNoString\": \"EMP001\",\n            \"name\": \"Test Employee\",\n            \"cardNo\": \"\",\n            \"majorEventType\": 5,\n            \"subEventType\": 75,\n            \"attendanceStatus\": \"checkIn\",\n            \"currentVerifyMode\": \"face\",\n            \"serialNo\": 100002\n        }\n    }\n}','JSON','PENDING',NULL,'2026-09-15 08:56:27',NULL,'2026-09-15 02:56:27','2026-09-15 02:56:27'),
 (4,NULL,'AccessControllerEvent','active','2026-09-15 08:15:00','40065','Saidur Rahman','',5,75,'checkIn','face',100002,'{\n    \"EventNotificationAlert\": {\n        \"ipAddress\": \"192.168.1.50\",\n        \"dateTime\": \"2026-09-15T08:15:00+06:00\",\n        \"eventType\": \"AccessControllerEvent\",\n        \"eventState\": \"active\",\n        \"AccessControllerEvent\": {\n            \"employeeNoString\": \"40065\",\n            \"name\": \"Saidur Rahman\",\n            \"cardNo\": \"\",\n            \"majorEventType\": 5,\n            \"subEventType\": 75,\n            \"attendanceStatus\": \"checkIn\",\n            \"currentVerifyMode\": \"face\",\n            \"serialNo\": 100002\n        }\n    }\n}','JSON','PENDING',NULL,'2026-09-15 08:57:07',NULL,'2026-09-15 02:57:07','2026-09-15 02:57:07'),
-(5,NULL,'AccessControllerEvent','active','2026-09-15 08:15:00','40065','Saidur Rahman','',5,75,'checkIn','face',100002,'{\n    \"EventNotificationAlert\": {\n        \"ipAddress\": \"192.168.1.50\",\n        \"dateTime\": \"2026-09-15T08:15:00+06:00\",\n        \"eventType\": \"AccessControllerEvent\",\n        \"eventState\": \"active\",\n        \"AccessControllerEvent\": {\n            \"employeeNoString\": \"40065\",\n            \"name\": \"Saidur Rahman\",\n            \"cardNo\": \"\",\n            \"majorEventType\": 5,\n            \"subEventType\": 75,\n            \"attendanceStatus\": \"checkIn\",\n            \"currentVerifyMode\": \"face\",\n            \"serialNo\": 100002\n        }\n    }\n}','JSON','PENDING',NULL,'2026-09-15 08:57:08',NULL,'2026-09-15 02:57:08','2026-09-15 02:57:08');
+(5,NULL,'AccessControllerEvent','active','2026-09-15 08:15:00','40065','Saidur Rahman','',5,75,'checkIn','face',100002,'{\n    \"EventNotificationAlert\": {\n        \"ipAddress\": \"192.168.1.50\",\n        \"dateTime\": \"2026-09-15T08:15:00+06:00\",\n        \"eventType\": \"AccessControllerEvent\",\n        \"eventState\": \"active\",\n        \"AccessControllerEvent\": {\n            \"employeeNoString\": \"40065\",\n            \"name\": \"Saidur Rahman\",\n            \"cardNo\": \"\",\n            \"majorEventType\": 5,\n            \"subEventType\": 75,\n            \"attendanceStatus\": \"checkIn\",\n            \"currentVerifyMode\": \"face\",\n            \"serialNo\": 100002\n        }\n    }\n}','JSON','PENDING',NULL,'2026-09-15 08:57:08',NULL,'2026-09-15 02:57:08','2026-09-15 02:57:08'),
+(6,NULL,'AccessControllerEvent','active','2026-09-15 08:10:00','EMP001','Test Employee','',5,75,'checkIn','face',300001,'{\n    \"EventNotificationAlert\": {\n      \"ipAddress\": \"192.168.1.50\",\n      \"dateTime\": \"2026-09-15T08:10:00+06:00\",\n      \"eventType\": \"AccessControllerEvent\",\n      \"eventState\": \"active\",\n      \"AccessControllerEvent\": {\n        \"employeeNoString\": \"EMP001\",\n        \"name\": \"Test Employee\",\n        \"cardNo\": \"\",\n        \"majorEventType\": 5,\n        \"subEventType\": 75,\n        \"attendanceStatus\": \"checkIn\",\n        \"currentVerifyMode\": \"face\",\n        \"serialNo\": 300001\n      }\n    }\n  }','JSON','PROCESSED',NULL,'2026-09-15 09:17:19','2026-09-15 09:17:20','2026-09-15 03:17:19','2026-09-15 03:17:20'),
+(7,NULL,'AccessControllerEvent','active','2026-09-15 18:05:00','EMP001','Test Employee','',5,75,'checkOut','face',300002,'{\n    \"EventNotificationAlert\": {\n      \"ipAddress\": \"192.168.1.50\",\n      \"dateTime\": \"2026-09-15T18:05:00+06:00\",\n      \"eventType\": \"AccessControllerEvent\",\n      \"eventState\": \"active\",\n      \"AccessControllerEvent\": {\n        \"employeeNoString\": \"EMP001\",\n        \"name\": \"Test Employee\",\n        \"cardNo\": \"\",\n        \"majorEventType\": 5,\n        \"subEventType\": 75,\n        \"attendanceStatus\": \"checkOut\",\n        \"currentVerifyMode\": \"face\",\n        \"serialNo\": 300002\n      }\n    }\n  }','JSON','PROCESSED',NULL,'2026-09-15 09:17:31','2026-09-15 09:17:31','2026-09-15 03:17:31','2026-09-15 03:17:31'),
+(8,NULL,'AccessControllerEvent','active','2026-09-15 08:18:00','40065','Saidur Rahman','',5,75,'checkOut','face',100002,'{\n    \"EventNotificationAlert\": {\n        \"ipAddress\": \"192.168.1.50\",\n        \"dateTime\": \"2026-09-15T08:18:00+06:00\",\n        \"eventType\": \"AccessControllerEvent\",\n        \"eventState\": \"active\",\n        \"AccessControllerEvent\": {\n            \"employeeNoString\": \"40065\",\n            \"name\": \"Saidur Rahman\",\n            \"cardNo\": \"\",\n            \"majorEventType\": 5,\n            \"subEventType\": 75,\n            \"attendanceStatus\": \"checkOut\",\n            \"currentVerifyMode\": \"face\",\n            \"serialNo\": 100002\n        }\n    }\n}','JSON','PROCESSED',NULL,'2026-09-15 09:24:39','2026-09-15 09:24:40','2026-09-15 03:24:39','2026-09-15 03:24:40');
 /*!40000 ALTER TABLE `hikvision_events` ENABLE KEYS */;
 UNLOCK TABLES;
 commit;
@@ -287,7 +294,7 @@ CREATE TABLE `jobs` (
   `created_at` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `jobs_queue_index` (`queue`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -396,8 +403,8 @@ LOCK TABLES `sessions` WRITE;
 /*!40000 ALTER TABLE `sessions` DISABLE KEYS */;
 set autocommit=0;
 INSERT INTO `sessions` VALUES
-('69obzWro7SHm9vrssfRdDaSAWF22LGE83hWp6YsY',1,'127.0.0.1','Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:155.0) Gecko/20100101 Firefox/155.0','eyJfdG9rZW4iOiJpaFM2ZXRVeGFDRTgwZ1VVMnBpMm1PUXJLcE53Z29RbDJHTTNZcjUyIiwiX3ByZXZpb3VzIjp7InVybCI6Imh0dHA6XC9cL3prdGVjby1hdHRlbmRhbmNlLnRlc3RcL2hpa3Zpc2lvblwvZXZlbnRzXC81Iiwicm91dGUiOiJoaWt2aXNpb24uZXZlbnRzLnNob3cifSwiX2ZsYXNoIjp7Im9sZCI6W10sIm5ldyI6W119LCJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI6MSwiYXV0aCI6eyJwYXNzd29yZF9jb25maXJtZWRfYXQiOjE3ODk0Mzk5NjF9fQ==',1789441095),
-('7CzcFHWOY3Uc8mpePaiiZMg4rW1O8ZLiUBiZJWYz',1,'127.0.0.1','curl/8.7.1','eyJfdG9rZW4iOiJiMlpLWDN0UjN1clk1TzhYMkRWWTJudXcyVERRMWRjcTRkazUzWUl4IiwiX3ByZXZpb3VzIjp7InVybCI6Imh0dHA6XC9cL2xvY2FsaG9zdDo4MDAwXC9ob21lIiwicm91dGUiOiJob21lIn0sIl9mbGFzaCI6eyJvbGQiOltdLCJuZXciOltdfSwibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiOjEsImF1dGgiOnsicGFzc3dvcmRfY29uZmlybWVkX2F0IjoxNzg5NDM5MjU4fX0=',1789440932),
+('69obzWro7SHm9vrssfRdDaSAWF22LGE83hWp6YsY',1,'127.0.0.1','Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:155.0) Gecko/20100101 Firefox/155.0','eyJfdG9rZW4iOiJpaFM2ZXRVeGFDRTgwZ1VVMnBpMm1PUXJLcE53Z29RbDJHTTNZcjUyIiwiX3ByZXZpb3VzIjp7InVybCI6Imh0dHA6XC9cL3prdGVjby1hdHRlbmRhbmNlLnRlc3RcL2hpa3Zpc2lvblwvcmVwb3J0c1wvYXR0ZW5kYW5jZSIsInJvdXRlIjoiaGlrdmlzaW9uLnJlcG9ydHMuYXR0ZW5kYW5jZSJ9LCJfZmxhc2giOnsib2xkIjpbXSwibmV3IjpbXX0sImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjoxLCJhdXRoIjp7InBhc3N3b3JkX2NvbmZpcm1lZF9hdCI6MTc4OTQzOTk2MX19',1789442752),
+('7CzcFHWOY3Uc8mpePaiiZMg4rW1O8ZLiUBiZJWYz',1,'127.0.0.1','curl/8.7.1','eyJfdG9rZW4iOiJiMlpLWDN0UjN1clk1TzhYMkRWWTJudXcyVERRMWRjcTRkazUzWUl4IiwiX3ByZXZpb3VzIjp7InVybCI6Imh0dHA6XC9cL2xvY2FsaG9zdDo4MDAwXC96a3RlY29cL3JlcG9ydHNcL2F0dGVuZGFuY2UiLCJyb3V0ZSI6InprdGVjby5yZXBvcnRzLmF0dGVuZGFuY2UifSwiX2ZsYXNoIjp7Im9sZCI6W10sIm5ldyI6W119LCJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI6MSwiYXV0aCI6eyJwYXNzd29yZF9jb25maXJtZWRfYXQiOjE3ODk0MzkyNTh9fQ==',1789442434),
 ('ceuFr8Rr4VJGCHOIkXRLUEOcGG2c1oXzkorcRVok',NULL,'127.0.0.1','Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:155.0) Gecko/20100101 Firefox/155.0','eyJfdG9rZW4iOiJIMGpEeFQyazhqWE4zQmVmOENZTEROU01vOHc0Q0VlNnJRNFpDT1BLIiwidXJsIjp7ImludGVuZGVkIjoiaHR0cDpcL1wvemt0ZWNvLWF0dGVuZGFuY2UudGVzdFwvaG9tZSJ9LCJfcHJldmlvdXMiOnsidXJsIjoiaHR0cDpcL1wvemt0ZWNvLWF0dGVuZGFuY2UudGVzdFwvbG9naW4iLCJyb3V0ZSI6ImxvZ2luIn0sIl9mbGFzaCI6eyJvbGQiOltdLCJuZXciOltdfX0=',1789438832),
 ('efYXRMBCjTSGOAGIDOZQQgzyx40tpPQ0fCnt1X6m',1,'127.0.0.1','curl/8.7.1','eyJfdG9rZW4iOiIwZjN4YlY3Z01VOG56VFE2Y3drYzhUa1B0Wms4dHNtc01yQ2NwNWVuIiwiX3ByZXZpb3VzIjp7InVybCI6Imh0dHA6XC9cL2xvY2FsaG9zdDo4MDAwXC96a3RlY29cL3JlcG9ydHNcL2F0dGVuZGFuY2UiLCJyb3V0ZSI6InprdGVjby5yZXBvcnRzLmF0dGVuZGFuY2UifSwiX2ZsYXNoIjp7Im9sZCI6W10sIm5ldyI6W119LCJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI6MSwiYXV0aCI6eyJwYXNzd29yZF9jb25maXJtZWRfYXQiOjE3ODk0MzI5MjV9fQ==',1789435523),
 ('kQgzAUgZXyuKuxrBmnVKPpDwmGT8O7ffDRbAo0LV',1,'127.0.0.1','Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:155.0) Gecko/20100101 Firefox/155.0','eyJfdG9rZW4iOiIyRElwNEJwaFAzUHRNdVlyQVUxTFdCakNIWENoNHp2NkNYWDJJWjRVIiwidXJsIjpbXSwiX3ByZXZpb3VzIjp7InVybCI6Imh0dHA6XC9cL3prdGVjby1hdHRlbmRhbmNlLnRlc3RcL2hvbWUiLCJyb3V0ZSI6ImhvbWUifSwiX2ZsYXNoIjp7Im9sZCI6W10sIm5ldyI6W119LCJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI6MSwiYXV0aCI6eyJwYXNzd29yZF9jb25maXJtZWRfYXQiOjE3ODk0MzEwNjh9fQ==',1789438755),
@@ -826,4 +833,4 @@ commit;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*M!100616 SET NOTE_VERBOSITY=@OLD_NOTE_VERBOSITY */;
 
--- Dump completed on 2026-09-15  9:16:06
+-- Dump completed on 2026-09-15  9:26:42
