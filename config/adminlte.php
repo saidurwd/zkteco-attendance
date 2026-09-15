@@ -37,7 +37,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 4',
+    'title' => 'Attendance Nexus',
     'title_prefix' => '',
     'title_postfix' => '',
 
