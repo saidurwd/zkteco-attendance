@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ZkTeco\Api\DeviceController as DeviceApiController;
 use App\Http\Controllers\ZkTeco\Api\AttendanceController as AttendanceApiController;
 use App\Http\Controllers\ZkTeco\Api\MappingController as MappingApiController;
+use App\Http\Controllers\Api\HikvisionEventController;
 
 Route::middleware('auth:sanctum')->prefix('v1/zkteco')->name('api.v1.zkteco.')->group(function () {
     Route::apiResource('devices', DeviceApiController::class);
@@ -20,3 +21,5 @@ Route::middleware('auth:sanctum')->prefix('v1/zkteco')->name('api.v1.zkteco.')->
         });
     });
 });
+
+Route::post('/hikvision/events', [HikvisionEventController::class, 'receive'])->name('api.hikvision.events');

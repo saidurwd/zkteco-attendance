@@ -815,6 +815,17 @@ return [
             'url' => 'zkteco/reports/attendance',
             'icon' => 'bi bi-file-earmark-text',
         ],
+        ['header' => 'Hikvision Attendance'],
+        [
+            'text' => 'Hikvision Devices',
+            'url' => 'hikvision/devices',
+            'icon' => 'bi bi-camera-video',
+        ],
+        [
+            'text' => 'Hikvision Events',
+            'url' => 'hikvision/events',
+            'icon' => 'bi bi-list-ul',
+        ],
         ['header' => 'Account Settings'],
         [
             'text' => 'Users',
