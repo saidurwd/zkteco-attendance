@@ -2,6 +2,15 @@
 
 @section('title', 'Attendance Logs')
 
+@section('content_header')
+    <x-adminlte-content-header 
+        title="Attendance Logs"
+        :breadcrumbs="[
+            ['label' => 'Home', 'url' => route('home')],
+            ['label' => 'Attendance Logs']]"
+    />
+@stop
+
 @section('content')
     <div class="row">
         <div class="col-12">

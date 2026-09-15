@@ -2,6 +2,15 @@
 
 @section('title', 'Change Password')
 
+@section('content_header')
+    <x-adminlte-content-header 
+        title="Change Password"
+        :breadcrumbs="[
+            ['label' => 'Home', 'url' => route('home')],
+            ['label' => 'Change Password']]"
+    />
+@stop
+
 @section('content')
     <h1>Change Password</h1>
 

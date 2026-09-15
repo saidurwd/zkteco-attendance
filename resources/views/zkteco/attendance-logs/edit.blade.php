@@ -2,6 +2,16 @@
 
 @section('title', 'Edit Attendance Log')
 
+@section('content_header')
+    <x-adminlte-content-header 
+        title="Edit Attendance Log"
+        :breadcrumbs="[
+            ['label' => 'Home', 'url' => route('home')],
+            ['label' => 'Attendance Logs', 'url' => route('zkteco.attendance-logs.index'),
+            ['label' => 'Edit Attendance Log']]"
+    />
+@stop
+
 @section('content')
     <div class="row">
         <div class="col-md-6">

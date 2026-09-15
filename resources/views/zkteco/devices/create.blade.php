@@ -2,6 +2,16 @@
 
 @section('title', 'Add Device')
 
+@section('content_header')
+    <x-adminlte-content-header 
+        title="Add Device"
+        :breadcrumbs="[
+            ['label' => 'Home', 'url' => route('home')],
+            ['label' => 'Devices', 'url' => route('zkteco.devices.index'),
+            ['label' => 'Add Device']]"
+    />
+@stop
+
 @section('content')
     <div class="row">
         <div class="col-md-6">

@@ -2,6 +2,15 @@
 
 @section('title', 'Edit Profile')
 
+@section('content_header')
+    <x-adminlte-content-header 
+        title="Edit Profile"
+        :breadcrumbs="[
+            ['label' => 'Home', 'url' => route('home')],
+            ['label' => 'Edit Profile']]"
+    />
+@stop
+
 @section('content')
     <h1>Edit Profile</h1>
 

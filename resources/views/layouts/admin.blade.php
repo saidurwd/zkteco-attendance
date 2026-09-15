@@ -3,7 +3,13 @@
 @section('title', 'AdminLTE')
 
 @section('content_header')
-    <h1>Dashboard</h1>
+    <x-adminlte-content-header 
+        title="Dashboard"
+        :breadcrumbs="[
+            ['label' => 'Home', 'url' => route('home')],
+            ['label' => 'Dashboard']
+        ]"
+    />
 @stop
 
 @section('content')

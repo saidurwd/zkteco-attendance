@@ -2,6 +2,17 @@
 
 @section('title', 'Employee Mappings')
 
+@section('content_header')
+    <x-adminlte-content-header 
+        title="{{ 'Employee Mappings - ' . $device->serial_number }}"
+        :breadcrumbs="[
+            ['label' => 'Home', 'url' => route('home')],
+            ['label' => 'Devices', 'url' => route('zkteco.devices.index')],
+            ['label' => 'Employee Mappings']
+        ]"
+    />
+@stop
+
 @section('content')
     <div class="row">
         <div class="col-12">

@@ -2,6 +2,16 @@
 
 @section('title', 'Add User')
 
+@section('content_header')
+    <x-adminlte-content-header 
+        title="Add User"
+        :breadcrumbs="[
+            ['label' => 'Home', 'url' => route('home')],
+            ['label' => 'Users', 'url' => route('admin.users.index'),
+            ['label' => 'Add User']]"
+    />
+@stop
+
 @section('content')
     <div class="row">
         <div class="col-md-6">

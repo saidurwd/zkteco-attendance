@@ -2,6 +2,17 @@
 
 @section('title', 'Add Mapping')
 
+@section('content_header')
+    <x-adminlte-content-header 
+        title="Add Employee Mapping"
+        :breadcrumbs="[
+            ['label' => 'Home', 'url' => route('home')],
+            ['label' => 'Devices', 'url' => route('zkteco.devices.index'),
+            ['label' => 'Employee Mappings', 'url' => route('zkteco.devices.mappings.index', $device)],
+            ['label' => 'Add Mapping']]"
+    />
+@stop
+
 @section('content')
     <div class="row">
         <div class="col-md-6">
