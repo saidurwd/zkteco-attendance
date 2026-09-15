@@ -65,5 +65,6 @@ Route::middleware('auth')->group(function () {
     Route::prefix('hikvision')->name('hikvision.')->group(function () {
         Route::resource('devices', HikvisionDeviceController::class);
         Route::resource('events', HikvisionEventController::class)->only(['index', 'show']);
+        Route::get('reports/attendance', [HikvisionEventController::class, 'attendance'])->name('reports.attendance');
     });
 });

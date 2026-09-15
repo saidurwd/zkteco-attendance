@@ -3,9 +3,14 @@
 namespace App\Http\Controllers\Hikvision;
 
 use App\Http\Controllers\Controller;
-use App\Models\HikvisionEvent;
 use App\Models\HikvisionDevice;
+use App\Models\HikvisionEvent;
+use Carbon\Carbon;
+use DateTime;
+use DateTimeZone;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\DB;
 
 class EventController extends Controller
 {
@@ -32,5 +37,52 @@ class EventController extends Controller
         $event->load('device');
 
         return view('hikvision.events.show', compact('event'));
+    }
+
+    public function attendance(Request $request)
+    {
+        $tz = Config::get('app.timezone', 'UTC');
+
+        $tzOffsetSeconds = (new DateTimeZone($tz))->getOffset(new DateTime());
+        $tzOffsetHours = $tzOffsetSeconds / 3600;
+
+        $tzExpr = "TIMESTAMPADD(HOUR, {$tzOffsetHours}, al.attendance_time)";
+
+        $query = DB::table('attendance_logs as al')
+            ->selectRaw("
+                al.device_id,
+                d.device_name,
+                d.device_serial,
+                al.employee_no,
+                DATE({$tzExpr}) AS attendance_date,
+                MIN({$tzExpr}) AS clock_in,
+                MAX({$tzExpr}) AS clock_out,
+                COUNT(al.id) AS total_entries,
+                TIMEDIFF(MAX({$tzExpr}), MIN({$tzExpr})) AS total_hours
+            ")
+            ->leftJoin('hikvision_devices as d', 'd.id', '=', 'al.device_id')
+            ->groupBy('al.device_id', 'd.device_name', 'd.device_serial', 'al.employee_no',
+                      DB::raw("DATE({$tzExpr})"))
+            ->orderByDesc('attendance_date')
+            ->orderBy('al.employee_no');
+
+        if ($request->filled('start_date')) {
+            $query->whereDate(DB::raw($tzExpr), '>=', $request->start_date);
+        }
+        if ($request->filled('end_date')) {
+            $query->whereDate(DB::raw($tzExpr), '<=', $request->end_date);
+        }
+        if ($request->filled('employee_no')) {
+            $query->where('al.employee_no', 'like', "%{$request->employee_no}%");
+        }
+        if ($request->filled('device_id')) {
+            $query->where('al.device_id', $request->device_id);
+        }
+
+        $reports = $query->paginate(50)->withQueryString();
+
+        $devices = HikvisionDevice::orderBy('device_name')->get(['id', 'device_name', 'device_serial']);
+
+        return view('hikvision.reports.attendance', compact('reports', 'devices', 'tz'));
     }
 }

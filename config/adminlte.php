@@ -826,6 +826,11 @@ return [
             'url' => 'hikvision/events',
             'icon' => 'bi bi-list-ul',
         ],
+        [
+            'text' => 'Attendance Report',
+            'url' => 'hikvision/reports/attendance',
+            'icon' => 'bi bi-file-earmark-text',
+        ],
         ['header' => 'Account Settings'],
         [
             'text' => 'Users',
