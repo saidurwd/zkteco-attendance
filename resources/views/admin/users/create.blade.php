@@ -7,7 +7,7 @@
         title="Add User"
         :breadcrumbs="[
             ['label' => 'Home', 'url' => route('home')],
-            ['label' => 'Users', 'url' => route('admin.users.index'),
+            ['label' => 'Users', 'url' => route('admin.users.index')],
             ['label' => 'Add User']]"
     />
 @stop
