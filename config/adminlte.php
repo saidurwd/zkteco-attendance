@@ -810,6 +810,11 @@ return [
             'url' => 'zkteco/attendance-logs',
             'icon' => 'bi bi-calendar-check',
         ],
+        [
+            'text' => 'Attendance Report',
+            'url' => 'zkteco/reports/attendance',
+            'icon' => 'bi bi-file-earmark-text',
+        ],
         ['header' => 'Account Settings'],
         [
             'text' => 'Users',

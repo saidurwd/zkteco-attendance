@@ -6,6 +6,7 @@ use App\Http\Controllers\ZkTeco\AttendanceLogController;
 use App\Http\Controllers\ZkTeco\DeviceController;
 use App\Http\Controllers\ZkTeco\EmployeeController;
 use App\Http\Controllers\ZkTeco\MappingController;
+use App\Http\Controllers\ZkTeco\ReportController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\UserController;
 
@@ -33,6 +34,7 @@ Route::middleware(['web', 'auth'])->prefix('zkteco')->name('zkteco.')->group(fun
 
     Route::resource('attendance-logs', AttendanceLogController::class);
     Route::resource('employees', EmployeeController::class);
+    Route::get('reports/attendance', [ReportController::class, 'attendance'])->name('reports.attendance');
 });
 
 Auth::routes();
