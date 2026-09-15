@@ -91,15 +91,15 @@
                             <tbody>
                                 @forelse ($reports as $row)
                                     <tr>
-                                        <td>{{ \Carbon\Carbon::parse($row->attendance_date)->format('Y-m-d') }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($row->attendance_date)->timezone($tz)->format('Y-m-d') }}</td>
                                         <td>{{ $row->employee_code }}</td>
                                         <td>{{ $row->name }}</td>
                                         <td>{{ $row->department }}</td>
                                         <td>{{ $row->position }}</td>
                                         <td>{{ $row->site_code }}</td>
                                         <td>{{ $row->serial_number }}</td>
-                                        <td>{{ \Carbon\Carbon::parse($row->clock_in)->format('H:i:s') }}</td>
-                                        <td>{{ \Carbon\Carbon::parse($row->clock_out)->format('H:i:s') }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($row->clock_in)->timezone($tz)->format('H:i:s') }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($row->clock_out)->timezone($tz)->format('H:i:s') }}</td>
                                         <td>{{ $row->total_entries }}</td>
                                         <td>{{ $row->total_hours }}</td>
                                     </tr>
