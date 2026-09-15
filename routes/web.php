@@ -2,9 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ZkTeco\AdmsController;
-use App\Http\Controllers\ZkTeco\DeviceController;
-use App\Http\Controllers\ZkTeco\MappingController;
 use App\Http\Controllers\ZkTeco\AttendanceLogController;
+use App\Http\Controllers\ZkTeco\DeviceController;
+use App\Http\Controllers\ZkTeco\EmployeeController;
+use App\Http\Controllers\ZkTeco\MappingController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\UserController;
 
@@ -31,6 +32,7 @@ Route::middleware(['web', 'auth'])->prefix('zkteco')->name('zkteco.')->group(fun
     });
 
     Route::resource('attendance-logs', AttendanceLogController::class);
+    Route::resource('employees', EmployeeController::class);
 });
 
 Auth::routes();

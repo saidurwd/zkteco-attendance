@@ -801,6 +801,11 @@ return [
             'icon' => 'bi bi-device-hdd',
         ],
         [
+            'text' => 'Employees',
+            'url' => 'zkteco/employees',
+            'icon' => 'bi bi-people',
+        ],
+        [
             'text' => 'Mappings',
             'url' => 'zkteco/devices/*/mappings',
             'icon' => 'bi bi-link-45deg',
