@@ -806,11 +806,6 @@ return [
             'icon' => 'bi bi-people',
         ],
         [
-            'text' => 'Mappings',
-            'url' => 'zkteco/devices/*/mappings',
-            'icon' => 'bi bi-link-45deg',
-        ],
-        [
             'text' => 'Attendance Logs',
             'url' => 'zkteco/attendance-logs',
             'icon' => 'bi bi-calendar-check',

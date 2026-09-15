@@ -7,7 +7,7 @@
         title="Edit Device"
         :breadcrumbs="[
             ['label' => 'Home', 'url' => route('home')],
-            ['label' => 'Devices', 'url' => route('zkteco.devices.index'),
+            ['label' => 'Devices', 'url' => route('zkteco.devices.index')],
             ['label' => 'Edit Device']]"
     />
 @stop

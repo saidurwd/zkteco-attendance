@@ -7,7 +7,7 @@
         title="Add Employee Mapping"
         :breadcrumbs="[
             ['label' => 'Home', 'url' => route('home')],
-            ['label' => 'Devices', 'url' => route('zkteco.devices.index'),
+            ['label' => 'Devices', 'url' => route('zkteco.devices.index')],
             ['label' => 'Employee Mappings', 'url' => route('zkteco.devices.mappings.index', $device)],
             ['label' => 'Add Mapping']]"
     />
